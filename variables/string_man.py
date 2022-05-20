@@ -1,4 +1,4 @@
-from char_man import remove_end
+from .char_man import remove_end
 
 def jws(
         a,
@@ -97,8 +97,8 @@ def slash_check(
     else:
         if '/' in string:
             res = jws(string, '/')
-        elif str("\\") in string:
-            arg_ = jws(string,str("\\"))
+        elif "\\" in string:
+            arg_ = jwos(string,"\\")
             res = remove_end(arg_)
             res = arg_
         else:

@@ -1,4 +1,5 @@
 from ..variables import string_man as sm
+from ..variables import char_man as cm
 from PIL import Image
 
 convert_message = 'File conversion complete.'
@@ -20,18 +21,22 @@ def png_jpg(
 
     parent_path = sm.slash_check(loc)
     if file_name.endswith(".png"):
-        pass
+        path = sm.jwos(parent_path, file_name)
+    elif '.' in file_name:
+        raise ValueError(
+            "Error: Invalid file type."
+        )
     else:
-        sm.jwos(file_name, ".png")
+        arg_ = sm.jwos(file_name, ".png")
+        path = sm.jwos(parent_path, arg_)
 
-
-    path = sm.jwos(parent_path, file_name)
-    print(path, '8989')
 
     im = Image.open(path)
-    target_name = sm.jwos(path,".jpg")
+    arg_ = path
+    for i in range(4):
+        arg_ = cm.remove_end(arg_)
+    target_name = sm.jwos(arg_,".jpg")
     rgb_im = im.convert('RGB')
     rgb_im.save(target_name)
-    print(convert_message)
 
-    return
+    return convert_message
