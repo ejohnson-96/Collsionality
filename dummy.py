@@ -1,16 +1,23 @@
 import constants as const
 from core.variables import char_man as cm
 from core.variables import string_man as sm
-from core.rw import file_converter as fc
-from core.rw import file_dir as fd
-from core.security import users as usr
+from system import fonts as font
+
+
 
 ic = const.initialise_constants()
 
+x = font.list_fonts()
+y = x['name'][10]
+print(y)
 
 
-x = usr.pwd_gen()
-print(x)
+
+
+
+test = 'alpha beta 123 903!'
+y = cm.nato_alphabet(test)
+print(y)
 
 
 

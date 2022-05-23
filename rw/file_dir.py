@@ -25,7 +25,7 @@ def dir_make(
             f"instead got {type(name)}"
         )
 
-    path = sm.slash_check(loc) + name  # jws
+    path = sm.slash_check(loc) + name
 
     os.mkdir(path)
 
