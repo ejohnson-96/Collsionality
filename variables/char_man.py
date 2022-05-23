@@ -150,6 +150,7 @@ nato_alph = ['alpha', 'beta', 'charlie', 'delta', 'echo',
 
 def nato_alphabet(
         string,
+        _list=False,
 ):
     if not isinstance(string, str):
         raise ValueError(
@@ -164,6 +165,8 @@ def nato_alphabet(
         phonetic = False
 
     res = ''
+    res_list = []
+
     prev = None
 
     if not phonetic:
@@ -173,23 +176,31 @@ def nato_alphabet(
                 arg_ = alphabet.index(letter)
                 if first:
                     res = sm.jwos(res, nato_alph[arg_])
+                    res_list.append(capital_first_letter(nato_alph[arg_]))
                 else:
                     res = sm.jws(res, nato_alph[arg_])
+                    res_list.append(capital_first_letter(nato_alph[arg_]))
             elif letter in numerical:
                 if first:
                     res = sm.jwos(res, letter)
+                    res_list.append(letter)
                 else:
                     if prev in numerical:
                         res = sm.jwos(res, letter)
+                        res_list.append(letter)
                     else:
                         res = sm.jws(res, letter)
+                        res_list.append(letter)
             elif letter in symbols:
                 res = sm.jwos(res, letter)
+                res_list.append(letter)
             elif letter == ' ':
                 if prev in symbols:
                     res = res
+                    res_list = res_list
                 else:
                     res = res + ','
+                    res_list.append(' ')
             else:
                 raise ValueError(
                     'Error: Letter not in the alphabet,'
@@ -208,29 +219,46 @@ def nato_alphabet(
                 arg_ = nato_alph.index(char)
                 if first:
                     res = sm.jwos(res, alphabet[arg_])
+                    res_list.append(capital_first_letter(capital_first_letter(alphabet[arg_])))
                 else:
                     res = sm.jws(res, alphabet[arg_])
-
+                    res_list.append(' ')
+                    res_list.append(capital_first_letter(alphabet[arg_]))
             else:
-
+                second = True
                 for s in char:
                     if s in numerical:
                         if first:
                             res = sm.jwos(res, s)
+                            res_list.append(capital_first_letter(s))
                         else:
                             if prev in numerical:
-                                res = sm.jwos(res, s)
+                                if second:
+                                    res = sm.jws(res, s)
+                                    res_list.append(' ')
+                                    res_list.append(s)
+                                else:
+                                    res = sm.jwos(res, s)
+                                    res_list.append(capital_first_letter(s))
                             else:
                                 res = sm.jws(res, s)
+                                res_list.append(' ')
+                                res_list.append(capital_first_letter(s))
                     elif s in symbols:
                         res = sm.jwos(res, s)
+                        res_list.append(s)
                     else:
                         raise ValueError(
                             'Error: Letter not in the NATO alphabet,'
                             f' instead got {s}.'
                         )
+                    second = False
                     prev = s
             first = False
 
+    if _list:
+        res_arg_ = res_list
+    else:
+        res_arg_ = capital_all_first_letter(res)
 
-    return capital_all_first_letter(res)
+    return res_arg_
