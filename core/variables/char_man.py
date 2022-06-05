@@ -105,11 +105,12 @@ def remove_begin(
 
     return result
 
-def remove_char(
+def replace_char(
         string,
         character,
+        replacement,
 ):
-    arg_name_ = []
+    arg_name_ = [string, character, replacement]
     for arg_ in arg_name_:
         if not isinstance(arg_, str):
             raise ValueError(
@@ -118,12 +119,22 @@ def remove_char(
             )
 
     if character in string:
-        res = string.replace(character, '')
+        res = string.replace(character, replacement)
     else:
         raise TypeError(
             f"Character {character}, does not appear in the "
             f"string provided, {string}."
         )
+
+    return res
+
+
+def remove_char(
+        string,
+        character,
+):
+
+    res = replace_char(string, character, '')
 
     return res
 
