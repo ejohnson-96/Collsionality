@@ -1,5 +1,4 @@
-import sys
-from variables import string_man as sm
+from core.variables import string_man as sm
 
 
 def capital_first_letter(
@@ -105,6 +104,28 @@ def remove_begin(
     result = string[1:]
 
     return result
+
+def remove_char(
+        string,
+        character,
+):
+    arg_name_ = []
+    for arg_ in arg_name_:
+        if not isinstance(arg_, str):
+            raise ValueError(
+                f"Argument {arg_}, is not of string type, "
+                f"instead got type {type(arg_)}."
+            )
+
+    if character in string:
+        res = string.replace(character, '')
+    else:
+        raise TypeError(
+            f"Character {character}, does not appear in the "
+            f"string provided, {string}."
+        )
+
+    return res
 
 
 def add_space_front(
@@ -262,3 +283,4 @@ def nato_alphabet(
         res_arg_ = capital_all_first_letter(res)
 
     return res_arg_
+
