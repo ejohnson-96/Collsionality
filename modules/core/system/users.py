@@ -3,7 +3,10 @@ import ctypes
 import random
 import string
 
-val_sym = "!@#$%^&*()"
+from modules.core.constants import system_const
+
+system_const()
+
 
 def is_user_admin(
 
@@ -18,8 +21,8 @@ def is_user_admin(
 def list_users(
 
 ):
-
     return
+
 
 def pwd_gen(
         len=16,
@@ -27,6 +30,7 @@ def pwd_gen(
         symbols=True,
 ):
     min = 8
+    val_sym = system_const.symbols
 
     if not isinstance(len, int):
         raise TypeError(
@@ -41,12 +45,9 @@ def pwd_gen(
     if not symbols:
         y = ''
     else:
-        y = val_sym
+        y = ''.join(val_sym)
 
     characters = list(string.ascii_letters + x + y)
-
-
-
 
     if len < min:
         raise ValueError(
@@ -63,15 +64,15 @@ def pwd_gen(
     return res
 
 
-#import wmi
+# import wmi
 def os_vers(
 
 ):
-    #try:
+    # try:
 
-    #except:
-     #   data = wmi.WMI()
-      #  for os_name in data.Win32_OperatingSystem():
-       #     print(os_name.Caption)
+    # except:
+    #   data = wmi.WMI()
+    #  for os_name in data.Win32_OperatingSystem():
+    #     print(os_name.Caption)
 
     return

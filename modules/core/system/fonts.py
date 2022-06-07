@@ -1,10 +1,9 @@
 import os
 from matplotlib import font_manager
-from core.variables import char_man as cm
-from core.variables import string_man as sm
+from modules.core.variables import char_man as cm, string_man as sm
 
 
-def list_fonts(
+def font_list(
 
 ):
     fpaths = font_manager.findSystemFonts()
@@ -24,7 +23,7 @@ def list_fonts(
 def font_names(
 
 ):
-    fonts = list_fonts()
+    fonts = font_list()
     res = fonts['name']
 
     return res
@@ -33,7 +32,7 @@ def font_names(
 def font_dir(
 
 ):
-    fonts = list_fonts()
+    fonts = font_list()
     res = fonts['dir']
 
     return res
