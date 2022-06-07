@@ -38,5 +38,5 @@ def initialise_constants(
     const()
     system_const()
     res = 'Note: Constant initialisation successful.'
-
+    var ='test var'
     return res
