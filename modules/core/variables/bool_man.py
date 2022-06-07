@@ -13,7 +13,7 @@ def valid_bool(
         )
 
 
-def _and(
+def and_(
         a,
         b,
 ):
@@ -25,7 +25,7 @@ def _and(
         return False
 
 
-def _nand(
+def nand_(
         a,
         b,
 ):
@@ -37,7 +37,7 @@ def _nand(
         return True
 
 
-def _or(
+def or_(
         a,
         b,
 ):
@@ -49,7 +49,7 @@ def _or(
         return False
 
 
-def _xor(
+def xor_(
         a,
         b,
 ):
@@ -61,7 +61,7 @@ def _xor(
         return False
 
 
-def _not(
+def not_(
         a,
 ):
     if not isinstance(a, bool):
@@ -73,7 +73,7 @@ def _not(
     return not a
 
 
-def _nor(
+def nor_(
         a,
         b,
 ):
@@ -94,7 +94,7 @@ def _nor(
         )
 
 
-def _xnor(
+def xnor_(
         a,
         b,
 ):
