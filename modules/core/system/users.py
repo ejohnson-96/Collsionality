@@ -92,5 +92,3 @@ def check_user_input(
             return True
         except ValueError:
             return False
-
-test = 'test string'
