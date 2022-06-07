@@ -1,5 +1,6 @@
 import keyboard
-from core.variables import char_man as cm
+from modules.core.variables import char_man as cm
+
 
 def user_input(
 
