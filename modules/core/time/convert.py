@@ -1,7 +1,11 @@
+import datetime
 
-
-def seconds_epoch(
-        time,
+def epoch_time(
+        epoch_time,
 ):
 
-        time.append(df.epoch_time(solar_data[p]['time'][i]))
+    res = datetime.datetime.fromtimestamp(epoch_time)
+
+    return res
+
+
