@@ -26,6 +26,7 @@ def graph(
         grid=True,
         y_log=False,
         x_log=False,
+        colours=None,
 
 ):
     plt.figure(figsize=(const.x_dim, const.y_dim))
@@ -44,12 +45,25 @@ def graph(
         for key in y_data.keys():
             y_labels.append(key)
         for i in range(len(y_labels)):
-            r = random.random()
-            g = random.random()
-            b = random.random()
-            plt.plot(x_data, y_data[y_labels[i]],
-                     label=cm.capital_first_letter(y_labels[i]), color=(r, g, b),
-                     linewidth=const.line_width)
+            if colours is None:
+                r = random.random()
+                g = random.random()
+                b = random.random()
+                plt.plot(x_data, y_data[y_labels[i]],
+                         label=cm.capital_first_letter(y_labels[i]), color=(r, g, b),
+                         linewidth=const.line_width)
+            else:
+                if not isinstance(colours, (list, np.ndarray)):
+                    raise TypeError(
+                        "Error: Colours needs to be list or an array,"
+                        f"instead, got type {type(colours)}."
+                    )
+                if not len(colours) != len(y_data):
+                    raise ValueError(
+                        "Error: Colours must have the same length as the"
+                        "number of y data entries, instead got lengths "
+                        f"of {len(colours)} and {len(y_data)} respectively."
+                    )
     else:
         raise ValueError(
             f"Error: y_data type not supported, {type(y_data)}"
@@ -119,9 +133,10 @@ def histogram(
         grid=True,
         y_log=False,
         x_log=False,
+        colours=None,
 
 ):
-    if not isinstance(y_data. list):
+    if not isinstance(y_data.list):
         raise TypeError(
             "Error: Argument must be a list, instead "
             f"got type {type(y_data)}."
@@ -140,6 +155,6 @@ def histogram(
         y_[key] = smooth(hist_dist, const.pdf_smooth)
 
     graph(x_data, y_, x_lim, y_lim, limits, degree, title, label, x_axis, y_axis, grid,
-          y_log, x_log, )
+          y_log, x_log, colours, )
 
     return
