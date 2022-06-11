@@ -54,9 +54,7 @@ def colours_validate(
 def validate_styles(
         line_style,
 ):
-    valid_styles = []
-    for style in mark.MarkerStyle.markers.keys():
-        valid_styles.append(style)
+    valid_styles = list(mark.MarkerStyle.markers.keys())
 
     if isinstance(line_style, str):
         if line_style in valid_styles:
