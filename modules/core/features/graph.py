@@ -98,6 +98,7 @@ def graph(
         x_log=False,
         colours=None,
         style_line='-',
+        line_width=const.line_width,
 
 ):
     plt.figure(figsize=(const.x_dim, const.y_dim))
@@ -112,7 +113,7 @@ def graph(
     style_line = validate_styles(style_line)
     if isinstance(y_data, (list, np.ndarray)):
         plt.plot(x_data, y_data, label=cm.capital_first_letter(label), color='black',
-                 linewidth=const.line_width, linestyle=style_line)
+                 linewidth=line_width, linestyle=style_line)
     elif isinstance(y_data, dict):
         y_labels = []
         for key in y_data.keys():
@@ -125,7 +126,7 @@ def graph(
                 if isinstance(style_line, str):
                     plt.plot(x_data, y_data[y_labels[i]],
                              label=cm.capital_first_letter(y_labels[i]), color=(r, g, b),
-                             linewidth=const.line_width, linestyle=style_line)
+                             linewidth=line_width, linestyle=style_line)
                 else:
 
                     if len(style_line) != len(y_labels):
@@ -138,7 +139,7 @@ def graph(
 
                     plt.plot(x_data, y_data[y_labels[i]],
                              label=cm.capital_first_letter(y_labels[i]), color=(r, g, b),
-                             linewidth=const.line_width, linestyle=style_line[i])
+                             linewidth=line_width, linestyle=style_line[i])
             else:
                 if not isinstance(colours, (list, np.ndarray)):
                     raise TypeError(
@@ -157,12 +158,12 @@ def graph(
                     if isinstance(style_line, str):
                         plt.plot(x_data, y_data[y_labels[i]],
                                  label=cm.capital_first_letter(y_labels[i]), color=colour,
-                                 linewidth=const.line_width, linestyle=style_line)
+                                 linewidth=line_width, linestyle=style_line)
 
                     else:
                         plt.plot(x_data, y_data[y_labels[i]],
                                  label=cm.capital_first_letter(y_labels[i]), color=colour,
-                                 linewidth=const.line_width, linestyle=style_line[i])
+                                 linewidth=line_width, linestyle=style_line[i])
 
     else:
         raise ValueError(
