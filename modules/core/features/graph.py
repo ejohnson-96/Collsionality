@@ -236,13 +236,13 @@ def histogram(
         colours=None,
         style='-',
 ):
+
     if isinstance(y_data, dict):
         y_arg_ = {}
         y_ = {}
-        for key in y_data:
+        for key in y_data.keys():
             y_arg_[key] = smoothing.smooth(y_data[key], const.arg_smooth)
-            bin_num = int(max(y_arg_[key]) - min(y_arg_[key]) / const.bin_width)
-
+            bin_num = int((max(y_arg_[key]) - min(y_arg_[key]))/ const.bin_width)
             hist = np.histogram(y_arg_[key], bins=bin_num)
             hist_dist = scipy.stats.rv_histogram(hist)
             y_[key] = smoothing.smooth(hist_dist.pdf(x_data), const.pdf_smooth)
