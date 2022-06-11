@@ -97,7 +97,7 @@ def graph(
         y_log=False,
         x_log=False,
         colours=None,
-        style_line='-',
+        style_line=None,
         line_width=const.line_width,
 
 ):
@@ -110,7 +110,10 @@ def graph(
     x_0 = x_data[0]
     y_0 = 0
 
-    style_line = validate_styles(style_line)
+    if style_line is None:
+        style_line = '-'
+    else:
+        style_line = validate_styles(style_line)
     if isinstance(y_data, (list, np.ndarray)):
         plt.plot(x_data, y_data, label=cm.capital_first_letter(label), color='black',
                  linewidth=line_width, linestyle=style_line)
