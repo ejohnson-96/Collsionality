@@ -10,8 +10,8 @@ def const(
     const.font_family = 'Courier New'
     const.line_width = 2
 
-    const.pdf_smooth = 2
-    const.arg_smooth = 2
+    smooth = 15
+    const.smooth = int(smooth/3)
     const.bin_width = 0.2
 
     return
