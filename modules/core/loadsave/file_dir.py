@@ -38,7 +38,7 @@ def dir_make(
     path = sm.slash_check(loc) + name
     isExist = os.path.exists(path)
 
-    if isExist:
+    if not isExist:
         warnings.warn("Warning: Directory already exits.")
         return False
     else:
