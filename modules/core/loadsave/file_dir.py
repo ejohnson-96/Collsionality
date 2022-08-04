@@ -40,10 +40,10 @@ def dir_make(
 
     if isExist:
         warnings.warn("Warning: Directory already exits.")
-        return
+        return False
     else:
         os.mkdir(path)
-        return
+        return True
 
 
 def file_list(
