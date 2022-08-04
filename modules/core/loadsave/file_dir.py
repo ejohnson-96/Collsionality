@@ -46,12 +46,26 @@ def dir_make(
         return True
 
 def dir_name(
-
+    loc=None,
 ):
-    dir_path = os.getcwd()
-    dir_name = os.path.basename(dir_path)
-
-    return dir_name
+    if isinstance(loc, None):
+        dir_path = os.getcwd()
+        return os.path.basename(dir_path)
+    else:
+        if not isinstance(loc, str):
+            raise TypeError(
+                "Error: Directory path passed must be a string,"
+                f" instead got type {type(loc)}."
+            )
+        isExist = os.path.exists(loc)
+        if isExist:
+            return os.path.basename(loc)
+        else:
+            warnings.warn(
+                "Error: Directory location provided does not exist,"
+                f" location provided is: {loc}"
+            )
+            return False
 
 
 def file_list(
