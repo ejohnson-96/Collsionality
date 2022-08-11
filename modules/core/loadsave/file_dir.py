@@ -133,3 +133,14 @@ def slash(
         return '\\'
     else:
         return '/'
+
+def file_ext(
+        loc = path_dir,
+):
+    if not isinstance(loc, str):
+        raise TypeError(
+            'Error: File location must be of type string,'
+            f' instead got type of {type(loc)}.'
+        )
+
+    return os.path.splitext(loc)[-1].lower()
