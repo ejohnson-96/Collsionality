@@ -1,4 +1,3 @@
-
 def valid_dict(
         input,
 ):
@@ -41,3 +40,8 @@ def sort_alpha(
     return {key: value for key, value in sorted(dictionary.items())}
 
 
+def key_list(
+        dictionary,
+):
+    dictionary = valid_dict(dictionary)
+    return list(dictionary.keys())

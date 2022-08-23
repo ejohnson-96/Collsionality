@@ -10,7 +10,12 @@ def word_exists(
         word,
         dict_type="en_GB",
 ):
-    return
+    word = valid_string(word)
+
+    if dictionary.meaning(word, True) is None:
+        return False
+    else:
+        return True
 
 
 def spell_check(
@@ -39,6 +44,9 @@ def spell_check(
 
     spell = SpellChecker()
     word = lower_all_letter(valid_string(word))
+
+    print(spell.unknown(word))
+    print(spell.correction(word))
 
     if spell.unknown(word) == spell.correction(word):
         return True
@@ -73,5 +81,7 @@ def spell_review(
     return
 
 
-y = spell_review('science', suggestion=True, correction=True)
-print( y)
+word = 'heo'
+
+x = spell_check(word)
+print(x)

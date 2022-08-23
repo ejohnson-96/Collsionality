@@ -166,3 +166,9 @@ def remove_first_entry(
 ):
     return remove_index(arr, 0)
 
+
+def is_nan(
+        arr,
+):
+    arr = single_arr(arr)
+    return arr[np.logical_not(np.isnan(arr))]

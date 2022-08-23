@@ -1,5 +1,6 @@
 import validators
 
+
 def valid_string(
         string,
 ):
@@ -10,6 +11,7 @@ def valid_string(
         )
     else:
         return string
+
 
 def jws(
         a,

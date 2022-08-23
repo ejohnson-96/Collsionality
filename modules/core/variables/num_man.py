@@ -284,7 +284,7 @@ def is_even(
 def is_odd(
         number,
 ):
-    if is_even(number) == False:
+    if not is_even(number):
         return True
     else:
         return False
@@ -300,3 +300,37 @@ def dice_roll(
         res.append(roll)
 
     return res
+
+
+def fibonacci(
+        n,
+        list=False,
+):
+    n = valid_int(n)
+
+    if n <= 0:
+        raise ValueError(
+            f"Error: Argument {n}, must be greater than 0."
+        )
+    else:
+        sequence = [0, 1]
+        while len(sequence) <= n:
+            next_value = sequence[len(sequence) - 1] + sequence[len(sequence) - 2]
+            sequence.append(next_value)
+
+    if list:
+        return sequence
+    else:
+        return sequence[n]
+
+
+def factorial(
+        n,
+):
+    n = valid_int(n)
+    fact = 1
+    for i in range(1, n + 1):
+        fact = fact * i
+    return fact
+
+
