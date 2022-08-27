@@ -24,20 +24,21 @@ def dir_make(
         name,
         loc=path_dir,
 ):
-    if not isinstance(name, str):
-        raise TypeError(
-            f"Directory name {name} passed is not a string, "
-            f"instead got {type(name)}"
-        )
+    name = sm.valid_string(name)
+    return sm.slash_check(loc) + name
 
-    path = sm.slash_check(loc) + name
-    isExist = os.path.exists(path)
 
-    if isExist:
-        warnings.warn("Warning: Directory already exits.")
+def dir_exists(
+        path_dir,
+        warning=False,
+):
+    path_dir = sm.valid_string(path_dir)
+
+    if os.path.exists(path_dir):
+        if warning:
+            warnings.warn("Warning: Directory already exits.")
         return False
     else:
-        os.mkdir(path)
         return True
 
 
@@ -131,3 +132,10 @@ def all_file_type(
             if file.endswith(file_type):
                 res.append(os.path.join(root, file))
     return res
+
+
+def load_bar(
+
+):
+
+    return
