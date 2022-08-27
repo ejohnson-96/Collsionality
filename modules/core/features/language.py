@@ -81,6 +81,13 @@ def spell_review(
     return
 
 
+def translate(
+
+):
+
+    return
+
+
 word = 'heo'
 
 x = spell_check(word)
