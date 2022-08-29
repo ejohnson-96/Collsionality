@@ -2,6 +2,7 @@ from modules.core.loadsave import file_dir as fd
 from modules.core.variables import string_man as sm, char_man as cm, num_man as nm
 
 slash = fd.slash()
+valid_enc = [4,6,7]
 
 
 def load_generate(
@@ -13,21 +14,66 @@ def load_generate(
     encounter = nm.valid_float(encounter)
     radius = nm.valid_float(radius)
 
-    parent_path = sm.slash_check(fd.dir_parent())
-    path = sm.jwos(parent_path, 'data', slash, 'save', slash)
+    if radius > 3:
+        raise ValueError(
+            f"Error: The radial value {radius}, should be less than 2"
+        )
+
+    path = sm.jwos(sm.slash_check(fd.dir_parent()), 'data', slash, 'save', slash)
 
     if encounter == 0:
         enc = 'EA'
     else:
         enc = sm.jwos('E', str(encounter))
-    print(enc, path)
+
     fd.dir_make(enc, path)
 
-    path = sm.jwos(path, enc, slash)
-    radius_dir = fd.dir_make(str(radius), path)
-
-    return sm.jwos(path, str(radius), slash)
+    return sm.jwos(sm.jwos(path, enc, slash), str(radius), slash)
 
 
+def enc_selector(
+
+):
+    print('Currently loaded encounters:', valid_enc, '\n')
+
+    valid_full = ['f', 'full', 'ful', 'fu', 'ull', 'ff']
+    valid_single = ['s', 'single', 'ss', 'sngle', 'sig', 'ingle',]
+
+    h = 1
+    while h > 0:
+        data_set_input = input('Full data set or singular? (F/S)')
+        data_set_input = cm.lower_all_letter(sm.valid_string(data_set_input))
+        if data_set_input in valid_full:
+            encounter = 0
+            h = 0
+        elif data_set_input in valid_single:
+            g = 1
+            while g > 0:
+                enc_input = input('Please enter an encounter:')
+                enc_input = cm.lower_all_letter(sm.valid_string(enc_input))
+
+
+
+
+
+
+                if sm.valid_string(enc_input):
+                    if int(enc_input) in valid_enc:
+                        encount = int(enc_input)
+                        g = 0
+                    elif enc_input == '':
+                        print('Error: No input provided.')
+                    else:
+                        print('Error: No corresponding encounter available.')
+                else:
+                    print('Error: Argument provided is not valid,'
+                          f' argument {enc_input}, is of type {type(enc_input)}.')
+
+
+
+            h = 0
+
+        else:
+            print('Error: Please make a valid selection.')
 
 
