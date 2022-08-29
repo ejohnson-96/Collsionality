@@ -16,7 +16,7 @@ def slash(
         return '/'
 
 
-slash = slash()
+sys_slash = slash()
 
 
 def dir_parent(
@@ -88,7 +88,7 @@ def dir_drop(
         loc,
 ):
     loc = sm.valid_string(loc)
-    for i in range(len(loc.split(slash)[-1])):
+    for i in range(len(loc.split(sys_slash)[-1])):
         loc = remove_end(loc)
     return loc
 
@@ -137,7 +137,7 @@ def file_num(
 def folder_list(
         loc=path_dir,
 ):
-    return next(os.walk(sm.slash_check(m.valid_string(loc))))[1]
+    return next(os.walk(sm.slash_check(sm.valid_string(loc))))[1]
 
 
 def folder_num(
