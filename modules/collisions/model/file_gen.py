@@ -1,7 +1,10 @@
 from modules.core.loadsave import file_dir as fd
 from modules.core.variables import string_man as sm, char_man as cm, num_man as nm
 
+
+print(fd.slash())
 slash = fd.slash()
+
 valid_enc = [4,6,7]
 
 
@@ -50,30 +53,22 @@ def enc_selector(
             g = 1
             while g > 0:
                 enc_input = input('Please enter an encounter:')
-                enc_input = cm.lower_all_letter(sm.valid_string(enc_input))
-
-
-
-
-
-
-                if sm.valid_string(enc_input):
-                    if int(enc_input) in valid_enc:
-                        encount = int(enc_input)
+                if sm.is_float(enc_input):
+                    if float(enc_input) in valid_enc:
+                        encounter = float(enc_input)
                         g = 0
                     elif enc_input == '':
-                        print('Error: No input provided.')
+                        print('Error: No input provided, please try again.')
                     else:
-                        print('Error: No corresponding encounter available.')
+                        print(f'Error: The encounter provided {enc_input},'
+                              ' does not have corresponding encounter '
+                              'available.')
                 else:
-                    print('Error: Argument provided is not valid,'
-                          f' argument {enc_input}, is of type {type(enc_input)}.')
-
-
-
+                    print(f'Error: Argument {enc_input} is not valid, '
+                          f'str type is required, instead got type {type(enc_input)}.')
             h = 0
-
         else:
             print('Error: Please make a valid selection.')
 
+    return encounter
 

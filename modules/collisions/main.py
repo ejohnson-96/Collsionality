@@ -1,8 +1,8 @@
-from modules.collisions.model.file_gen import load_generate
+from modules.collisions.model.file_gen import load_generate, enc_selector
 
 
 
-
+enc_selector()
 
 
 
