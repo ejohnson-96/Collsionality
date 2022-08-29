@@ -143,3 +143,15 @@ def split(
         )
     else:
         return string.split(character)
+
+
+def is_float(
+        string,
+):
+    string = valid_string(string)
+
+    try:
+        float(string)
+        return True
+    except:
+        return False
