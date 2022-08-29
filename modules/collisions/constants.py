@@ -1,6 +1,7 @@
 from modules.core.loadsave import file_dir as fd
 from modules.core.variables import char_man as cm
 
+
 slash = fd.slash()
 
 
@@ -32,7 +33,6 @@ def enc(
     enc.encounter_errors = []
 
     for i in range(L):
-
         enc.encounter_names.append(enc.encounter[i] + '_protons.csv')
         enc.encounter_names.append(enc.encounter[i] + '_alphas.csv')
     if error_files:
@@ -53,7 +53,8 @@ def enc(
     if error_files:
         enc.num_files = len(enc.encounter_names) + len(enc.sc_names) + len(enc.encounter_errors)
     else:
-        enc.num_files = len(enc.encounter_names) + len(enc.sc_names) 
-
+        enc.num_files = len(enc.encounter_names) + len(enc.sc_names)
 
     return
+
+
